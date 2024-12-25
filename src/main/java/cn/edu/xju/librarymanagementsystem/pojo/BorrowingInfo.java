@@ -9,9 +9,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserInfo {
-    private String userId;
-    private String userName;
-    private String gender;
-    private Date birthday;
+public class BorrowingInfo {
+    private String bookName;
+    private Date borrowDate;
+    private Date estimatedReturnDate;
 }
