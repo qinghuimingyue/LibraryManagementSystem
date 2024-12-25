@@ -31,7 +31,7 @@ public class LoginInspectFilter implements Filter {
             return;
         }
         
-        String jwt = request.getHeader("Authorization");
+        String jwt = request.getHeader("token");
         
         log.info(jwt);
         if (!StringUtils.hasLength(jwt)) {
@@ -41,8 +41,6 @@ public class LoginInspectFilter implements Filter {
             response.getWriter().print(error);
             return;
         }
-        String[] jwts = jwt.split(" ");
-        jwt = jwts[1];
         try {
             JWT.parseJWT(jwt);
         } catch (Exception e) {

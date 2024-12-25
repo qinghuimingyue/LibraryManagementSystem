@@ -49,8 +49,8 @@ public class Result<T> {
         return new Result<>(data);
     }
     
-    public static <T> Result<T> success(String token,String empType) {
-        return new Result<>(200,"登录成功",token,empType);
+    public static <T> Result<T> success(String token,String userType) {
+        return new Result<>(200,"登录成功",token,userType);
     }
     
     public static <T> Result<T> fail(String message) {

@@ -9,8 +9,9 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BorrowingInfo {
-    private String bookName;
+public class LibrarianApprovalInfo {
+    private String userId;
+    private String bookId;
     private Date borrowDate;
     private Date estimatedReturnDate;
 }

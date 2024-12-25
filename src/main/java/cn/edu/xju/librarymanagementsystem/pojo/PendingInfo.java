@@ -1,6 +1,6 @@
 package cn.edu.xju.librarymanagementsystem.pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class PendingInfo {
     private String userId;
