@@ -22,6 +22,6 @@ public interface LibrarianApprovalReturnMapper {
     public int updateBookStatus(String bookId);
     
     //拒绝还书请求
-    @Update("update borrowing_info set status=1 where user_id=#{} and book_id=#{bookId}")
+    @Update("update borrowing_info set status=1 where user_id=#{userId} and book_id=#{bookId}")
     public int updateBorrowingInfo(String userId, String bookId);
 }

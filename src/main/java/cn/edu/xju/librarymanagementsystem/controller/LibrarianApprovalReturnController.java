@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/librarianReturn")
+@RestController
 @Slf4j
 public class LibrarianApprovalReturnController {
     @Autowired
     private LibrarianApprovalReturnService librarianApprovalReturnService;
     
-    @GetMapping("/getAllInfo")
+    @GetMapping("/librarianReturn/getAllInfo")
     public Result getAllInfo() {
         return Result.success(librarianApprovalReturnService.selectAll());
     }
     
-    @GetMapping("/pass")
+    @GetMapping("/librarianReturn/pass")
     public Result pass(@RequestParam String userId, @RequestParam String bookId) {
         if (librarianApprovalReturnService.pass(userId, bookId)) {
             log.info("用户：{}还书{}申请已通过", userId, bookId);
@@ -30,7 +30,7 @@ public class LibrarianApprovalReturnController {
         }
     }
     
-    @GetMapping("/noPass")
+    @GetMapping("/librarianReturn/noPass")
     public Result noPass(@RequestParam String userId, @RequestParam String bookId) {
         if (librarianApprovalReturnService.notPass(userId, bookId)) {
             log.info("已拒绝用户：{}还书{}申请", userId, bookId);

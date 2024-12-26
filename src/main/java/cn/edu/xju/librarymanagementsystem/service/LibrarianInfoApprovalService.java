@@ -24,5 +24,6 @@ public class LibrarianInfoApprovalService {
     
     public boolean unPass(String userId) {
         librarianInfoApprovalMapper.deletePendingLibrarian(userId);
+        return true;
     }
 }

@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@RestController("/librarianApproval")
+@RestController
 public class LibrarianApprovalController {
     @Autowired
     private LibrarianApprovalService librarianApprovalService;
     
-    @GetMapping("/allInfo")
+    @GetMapping("/librarianApproval/allInfo")
     public Result allInfo() {
         log.info("查询所有未审批借阅信息");
         return Result.success(librarianApprovalService.selectAll());
     }
     
-    @GetMapping("/pass")
+    @GetMapping("/librarianApproval/pass")
     public Result pass(@RequestParam String userId, @RequestParam String bookId) {
         if (librarianApprovalService.pass(userId, bookId)) {
             log.info("用户：{}申请借阅{}已通过", userId, bookId);
@@ -31,7 +31,7 @@ public class LibrarianApprovalController {
         }
     }
     
-    @GetMapping("noPass")
+    @GetMapping("/librarianApproval/noPass")
     public Result noPass(@RequestParam String userId, @RequestParam String bookId) {
         if (librarianApprovalService.notPass(userId, bookId)) {
             log.info("拒绝用户：{}申请借阅{}已通过", userId, bookId);
