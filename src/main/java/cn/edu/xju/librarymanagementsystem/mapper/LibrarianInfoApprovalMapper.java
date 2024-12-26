@@ -1,10 +1,10 @@
 package cn.edu.xju.librarymanagementsystem.mapper;
 
 import cn.edu.xju.librarymanagementsystem.pojo.PendingInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,6 +16,9 @@ public interface LibrarianInfoApprovalMapper {
     @Select("select * from librarymanagementsystem.pending_librarian where user_id=#{userId}")
     public PendingInfo queryPendingLibrarianById(String userId);
     
-    @Update("update librarymanagementsystem.user_information set ")
+    public void updateNewLibrarianInfo(PendingInfo pendingInfo);
+    
+    @Delete("delete from pending_librarian where user_id=#{userId}")
+    public void deletePendingLibrarian(String userId);
 }
 

@@ -1,6 +1,7 @@
 package cn.edu.xju.librarymanagementsystem.service;
 
 import cn.edu.xju.librarymanagementsystem.mapper.LibrarianApprovalMapper;
+import cn.edu.xju.librarymanagementsystem.mapper.LibrarianApprovalReturnMapper;
 import cn.edu.xju.librarymanagementsystem.pojo.LibrarianApprovalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,19 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LibrarianApprovalService {
+public class LibrarianApprovalReturnService {
     @Autowired
-    LibrarianApprovalMapper librarianApprovalMapper;
+    private LibrarianApprovalReturnMapper librarianApprovalReturnMapper;
     
     public List<LibrarianApprovalInfo> selectAll() {
-        return librarianApprovalMapper.getLibrarianApprovalInfo();
+        return librarianApprovalReturnMapper.getLibrarianApprovalInfo();
     }
     
     public boolean pass(String userId, String bookId) {
-        return (librarianApprovalMapper.updateBorrowingStatusByUserIdANDBookId(userId, bookId) == 1) && (librarianApprovalMapper.updateBookInfoStatusByBookId(bookId) == 1);
+        return (librarianApprovalReturnMapper.deleteBorrowingInfoByUserIdANDBookId(userId, bookId) == 1) && (librarianApprovalReturnMapper.updateBookStatus(bookId) == 1);
     }
     
     public boolean notPass(String userId, String bookId) {
-        return librarianApprovalMapper.deleteBorrowingInfoByUserIdANDBookId(userId, bookId) == 1;
+        return librarianApprovalReturnMapper.updateBorrowingInfo(userId, bookId) == 1;
     }
 }

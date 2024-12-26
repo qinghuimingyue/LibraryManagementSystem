@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface CreatLibrarianMapper {
-    @Insert("INSERT librarymanagementsystem.user_information set librarymanagementsystem.user_information.user_id=#{userId},librarymanagementsystem.user_information.user_name=#{userName},librarymanagementsystem.user_information.gender=#{gender},birthday=#{birthday}")
+    @Insert("INSERT librarymanagementsystem.user_information set librarymanagementsystem.user_information.user_id=#{userId},librarymanagementsystem.user_information.user_name=#{userName},librarymanagementsystem.user_information.gender=#{gender},birthday=#{birthday},enrollment_date=current_time,type='图书管理员'")
     public int insertUserInformation(UserInfo user);
 }

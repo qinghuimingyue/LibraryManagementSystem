@@ -17,6 +17,12 @@ public class LibrarianInfoApprovalService {
     }
     
     public boolean approveLibrarianInfoApproval(String userId) {
+        librarianInfoApprovalMapper.updateNewLibrarianInfo(librarianInfoApprovalMapper.queryPendingLibrarianById(userId));
+        librarianInfoApprovalMapper.deletePendingLibrarian(userId);
+        return true;
+    }
     
+    public boolean unPass(String userId) {
+        librarianInfoApprovalMapper.deletePendingLibrarian(userId);
     }
 }

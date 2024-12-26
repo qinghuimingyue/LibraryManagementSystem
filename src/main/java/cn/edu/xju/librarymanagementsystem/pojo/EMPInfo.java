@@ -9,10 +9,10 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class PendingInfo {
+public class EMPInfo {
     private String userId;
     private String userName;
-    private String modifyProject;
     private String gender;
     private Date birthday;
+    private Date enrollmentDate;
 }

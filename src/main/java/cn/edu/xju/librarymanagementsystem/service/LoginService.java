@@ -9,7 +9,7 @@ public class LoginService {
     @Autowired
     LoginMapper loginMapper;
     
-    public boolean login(String username, String password) {
-        return loginMapper.checkLogin(username, password) == 1;
+    public boolean login(String userId, String password) {
+        return loginMapper.checkLogin(userId, password) == 1;
     }
 }

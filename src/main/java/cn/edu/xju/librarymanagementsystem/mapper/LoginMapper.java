@@ -7,8 +7,7 @@ import org.apache.ibatis.annotations.Select;
 public interface LoginMapper {
     @Select("""
             select count(*)
-                    from employee_password
-                    where (select employee.emp_id from employee where #{empName} = name) = emp_id
-                      and #{password} = emp_password;""")
-    public int checkLogin(String empName, String password);
+                    from password
+                    where user_id = #{userId};""")
+    public int checkLogin(String userId, String password);
 }
