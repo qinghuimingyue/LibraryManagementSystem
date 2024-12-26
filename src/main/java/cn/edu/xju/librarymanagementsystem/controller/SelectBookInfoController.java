@@ -23,4 +23,9 @@ public class SelectBookInfoController {
     public Result bookDetail(@RequestParam String bookId) {
         return Result.success(selectBookInfoService.getBookInfoByBookId(bookId));
     }
+    
+    @GetMapping("/userBorrowingInfo")
+    public Result userBorrowingInfo(@RequestParam String bookId) {
+        return Result.success(selectBookInfoService.getAllUserBorrowingInfo(bookId));
+    }
 }

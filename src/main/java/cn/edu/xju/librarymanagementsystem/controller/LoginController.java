@@ -19,14 +19,14 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     
-    @PostMapping("/Login")
-    public Result Login(@RequestBody String userId, @RequestBody String password, @RequestBody String userType) {
+    @PostMapping("/login")
+    public Result Login(@RequestBody String userId, @RequestBody String password, @RequestBody String type) {
         if (loginService.login(userId, password)) {
             log.info("用户:{} 登入", userId);
             Map<String, Object> claims = new HashMap<>();
             claims.put("userId", userId);
-            claims.put("userType", userType);
-            return Result.success(JWT.getJWT(claims), userType);
+            claims.put("userType", type);
+            return Result.success(JWT.getJWT(claims), type);
         } else return Result.fail("密码或用户名不正确！");
     }
 }

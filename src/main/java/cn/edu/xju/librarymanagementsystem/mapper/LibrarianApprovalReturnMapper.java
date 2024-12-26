@@ -13,8 +13,8 @@ public interface LibrarianApprovalReturnMapper {
     @Select("select borrowing_info.user_id,borrowing_info.book_id,borrowing_info.borrow_date,borrowing_info.estimated_return_date from borrowing_info where status=-1")
     public List<LibrarianApprovalInfo> getLibrarianApprovalInfo();
     
-    //删除借阅信息
-    @Delete("delete from borrowing_info where user_id=#{userId} and book_id=#{bookId} and status=-1")
+    //修改借阅信息
+    @Update("update borrowing_info set status=-2 where user_id=#{userId} and book_id=#{bookId} and status=-1")
     public int deleteBorrowingInfoByUserIdANDBookId(String userId, String bookId);
     
     //修改书籍状态字
