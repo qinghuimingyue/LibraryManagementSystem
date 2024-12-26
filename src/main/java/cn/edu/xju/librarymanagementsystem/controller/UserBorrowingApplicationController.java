@@ -13,7 +13,7 @@ import java.sql.Date;
 @Slf4j
 public class UserBorrowingApplicationController {
     @Autowired
-    UserBorrowingApplicationService userBorrowingApplicationService;
+    private UserBorrowingApplicationService userBorrowingApplicationService;
     
     @GetMapping("/borrowingApplication")
     public Result addUserBorrowingApplication(@RequestHeader String jwt, @RequestParam String bookId, @RequestParam Date estimatedReturnDate) {

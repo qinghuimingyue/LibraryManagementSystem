@@ -20,15 +20,18 @@ public interface SelectBookInfoMapper {
     
     @Select("""
             SELECT
-                b.book_id,
                 b.borrow_date,
                 b.return_date,
+                b.user_id,
+                u.user_name,
                 bi.book_name
             FROM
                 borrowing_info b
-                    JOIN book_info bi ON b.book_id = #{bookId}
+                    JOIN book_info bi ON b.book_id = bi.book_id
+                    JOIN user_information u ON b.user_id = u.user_id
             WHERE
-                b.status IN (1, -2);""")
+                b.book_id = #{bookId}
+                AND b.status IN (1, -2);""")
     public List<UserBorrowingInfo> selectUserBorrowingInfo(String bookId);
     
     @Select("select  borrowing_info.estimated_return_date from borrowing_info where book_id=#{bookId} and status IN (1, -2)")

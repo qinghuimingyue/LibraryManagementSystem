@@ -6,12 +6,13 @@ import cn.edu.xju.librarymanagementsystem.utils.JWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("userInfo")
+@RestController
 public class UserInfoController {
     @Autowired
-    UserInfoService userInfoService;
+    private UserInfoService userInfoService;
     
     @GetMapping("/userInfo")
     public Result getUserInfo(@RequestHeader String jwt) {

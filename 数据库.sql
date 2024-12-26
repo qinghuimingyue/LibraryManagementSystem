@@ -42,7 +42,7 @@ create table borrowing_info
     borrow_date           datetime      not null comment '借出时间',
     estimated_return_date date          not null comment '预计归还时间',
     return_date           datetime      null comment '归还时间',
-    status                int default 0 not null comment '审批状态，0未审批，1审批通过，-1为还书申请',
+    status                int default 0 not null comment '审批状态，0未审批，1审批通过，-1为还书申请，-2为还书申请通过',
     primary key (book_id, user_id),
     constraint borrowing_info_book_info_book_id_fk
         foreign key (book_id) references book_info (book_id),

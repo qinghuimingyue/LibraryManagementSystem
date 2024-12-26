@@ -8,6 +8,6 @@ public interface LoginMapper {
     @Select("""
             select count(*)
                     from password
-                    where user_id = #{userId};""")
+                    where user_id = #{userId} and password = #{password};""")
     public int checkLogin(String userId, String password);
 }

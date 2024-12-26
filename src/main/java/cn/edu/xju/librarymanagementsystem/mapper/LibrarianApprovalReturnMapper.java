@@ -14,7 +14,7 @@ public interface LibrarianApprovalReturnMapper {
     public List<LibrarianApprovalInfo> getLibrarianApprovalInfo();
     
     //修改借阅信息
-    @Update("update borrowing_info set status=-2 where user_id=#{userId} and book_id=#{bookId} and status=-1")
+    @Update("update borrowing_info set status=-2,return_date=current_time where user_id=#{userId} and book_id=#{bookId} and status=-1")
     public int deleteBorrowingInfoByUserIdANDBookId(String userId, String bookId);
     
     //修改书籍状态字

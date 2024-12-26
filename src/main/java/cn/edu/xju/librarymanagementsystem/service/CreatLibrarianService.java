@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreatLibrarianService {
     @Autowired
-    CreatLibrarianMapper creatLibrarianMapper;
+    private CreatLibrarianMapper creatLibrarianMapper;
     
     public boolean insertUserInformation(UserInfo userInfo) {
-        return creatLibrarianMapper.insertUserInformation(userInfo)==1;
+        return creatLibrarianMapper.insertUserInformation(userInfo)==1&&creatLibrarianMapper.insertPassword(userInfo.getUserId())==1;
     }
 }

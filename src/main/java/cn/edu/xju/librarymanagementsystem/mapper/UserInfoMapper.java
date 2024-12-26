@@ -13,9 +13,17 @@ public interface UserInfoMapper {
     public UserInfo getUserInfo(String userId);
     
     @Select("""
-            SELECT bi.borrow_date, bi.estimated_return_date, bi.return_date, b.book_name
-            FROM borrowing_info bi
-                     JOIN book_info b ON bi.book_id = b.book_id
-            WHERE bi.user_id = #{userId} and b.status=1;""")
+            SELECT
+                b.borrow_date,
+                b.estimated_return_date,
+                b.return_date,
+                bi.book_name
+            FROM
+                borrowing_info b
+                    JOIN
+                book_info bi ON b.book_id = bi.book_id
+            WHERE
+                b.user_id = #{userId}
+              AND b.status = 1;""")
     public List<BorrowingInfo> getUserInfoList(String userId);
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
     @Autowired
-    LoginMapper loginMapper;
+    private LoginMapper loginMapper;
     
     public boolean login(String userId, String password) {
         return loginMapper.checkLogin(userId, password) == 1;

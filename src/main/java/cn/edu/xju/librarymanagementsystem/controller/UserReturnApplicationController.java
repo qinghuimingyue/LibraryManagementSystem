@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserReturnApplicationController {
     @Autowired
-    UserReturnApplicationService userReturnApplicationService;
+    private UserReturnApplicationService userReturnApplicationService;
     
     @GetMapping("/returnApplication")
     public Result returnApplication(@RequestHeader String jwt, @RequestParam String bookId) {

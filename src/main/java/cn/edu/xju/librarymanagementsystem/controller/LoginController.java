@@ -1,5 +1,6 @@
 package cn.edu.xju.librarymanagementsystem.controller;
 
+import cn.edu.xju.librarymanagementsystem.pojo.LoginInfo;
 import cn.edu.xju.librarymanagementsystem.pojo.Result;
 import cn.edu.xju.librarymanagementsystem.service.LoginService;
 import cn.edu.xju.librarymanagementsystem.utils.JWT;
@@ -20,13 +21,13 @@ public class LoginController {
     private LoginService loginService;
     
     @PostMapping("/login")
-    public Result Login(@RequestBody String userId, @RequestBody String password, @RequestBody String type) {
-        if (loginService.login(userId, password)) {
-            log.info("用户:{} 登入", userId);
+    public Result Login(@RequestBody LoginInfo loginInfo) {
+        if (loginService.login(loginInfo.getUserId(), loginInfo.getPassword())) {
+            log.info("用户:{} 登入", loginInfo.getUserId());
             Map<String, Object> claims = new HashMap<>();
-            claims.put("userId", userId);
-            claims.put("userType", type);
-            return Result.success(JWT.getJWT(claims), type);
+            claims.put("userId", loginInfo.getUserId());
+            claims.put("userType", loginInfo.getType());
+            return Result.success(JWT.getJWT(claims), loginInfo.getType());
         } else return Result.fail("密码或用户名不正确！");
     }
 }

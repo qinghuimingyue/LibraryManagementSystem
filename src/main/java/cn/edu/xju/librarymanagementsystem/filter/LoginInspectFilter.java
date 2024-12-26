@@ -23,19 +23,19 @@ public class LoginInspectFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURL().toString();
-        //log.info("请求的url:{}", url);
+        log.info("请求的url:{}", url);
         
         if (url.contains("login")) {
             filterChain.doFilter(request, response);
-            //log.info("登录操作，放行");
+            log.info("登录操作，放行");
             return;
         }
         
-        String jwt = request.getHeader("token");
+        String jwt = request.getHeader("jwt");
         
-        //log.info(jwt);
+        log.info(jwt);
         if (!StringUtils.hasLength(jwt)) {
-            //log.info("令牌不存在");
+            log.info("令牌不存在");
             Result res = Result.fail(0, "NOT_LOGIN");
             String error = JSONObject.toJSONString(res);
             response.getWriter().print(error);
@@ -45,14 +45,14 @@ public class LoginInspectFilter implements Filter {
             JWT.parseJWT(jwt);
         } catch (Exception e) {
             e.printStackTrace();
-            //log.info("令牌非法");
+            log.info("令牌非法");
             Result res = Result.fail(0, "NOT_LOGIN");
             String error = JSONObject.toJSONString(res);
             response.getWriter().print(error);
             return;
         }
         
-        //log.info("令牌合法");
+        log.info("令牌合法");
         filterChain.doFilter(request, response);
     }
 }

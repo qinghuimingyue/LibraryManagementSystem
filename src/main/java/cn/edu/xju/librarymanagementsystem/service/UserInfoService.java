@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserInfoService {
     @Autowired
-    UserInfoMapper userInfoMapper;
+    private UserInfoMapper userInfoMapper;
     
     public UserInfoANDBorrowingInfo getUserInfoByUserId(String userId) {
         UserInfoANDBorrowingInfo userInfoANDBorrowingInfo = new UserInfoANDBorrowingInfo();

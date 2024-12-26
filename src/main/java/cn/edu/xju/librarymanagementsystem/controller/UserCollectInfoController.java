@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserCollectInfoController {
     @Autowired
-    UserCollectInfoService userCollectInfoService;
+    private UserCollectInfoService userCollectInfoService;
     
     @GetMapping("/userCollectInfoByUserId")
     public Result userCollectInfoByUserId(@RequestHeader String jwt) {
