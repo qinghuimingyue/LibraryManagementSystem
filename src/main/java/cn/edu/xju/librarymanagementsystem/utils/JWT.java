@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class JWT {
-    static String signKey = "warehousehouduan";
+    static String signKey = "Javalibrarymanagementsystem";
     public static String getJWT(Map<String, Object> claims) {
         String jwtToken = Jwts.builder()
                 .setClaims(claims)
