@@ -19,4 +19,5 @@ public class BookDetail {
     private String douban;
     private String review;
     private Date publicationTime;
+    private int isLike;
 }

@@ -18,6 +18,9 @@ public interface SelectBookInfoMapper {
     @Select("select * from librarymanagementsystem.book_info where book_id=#{bookId}")
     public BookDetail getBookInfo(String bookId);
     
+    @Select("select count(*) from collect_info where user_id =#{userId} and book_id=#{bookId}")
+    public int getCollectCount(String userId, String bookId);
+    
     @Select("""
             SELECT
                 b.borrow_date,

@@ -23,17 +23,19 @@ public class SelectBookInfoService {
         return selectBookInfoMapper.getAllBookInfo();
     }
     
-    public BookDetail getBookInfoByBookId(String bookId) {
-        return selectBookInfoMapper.getBookInfo(bookId);
+    public BookDetail getBookInfoByBookId(String userId, String bookId) {
+        BookDetail bookDetail = selectBookInfoMapper.getBookInfo(bookId);
+        bookDetail.setIsLike(selectBookInfoMapper.getCollectCount(userId, bookId));
+        return bookDetail;
     }
     
     public List<UserBorrowingInfo> getAllUserBorrowingInfo(String bookId) {
         List<UserBorrowingInfo> info = selectBookInfoMapper.selectUserBorrowingInfo(bookId);
         List<Date> dates = selectBookInfoMapper.getUserEstimated(bookId);
         for (int i = 0; i < info.size(); i++) {
-            if (dates.get(i).toLocalDate().isBefore(LocalDate.now())){
+            if (dates.get(i).toLocalDate().isBefore(LocalDate.now())) {
                 info.get(i).setStatus(0);
-            }else info.get(i).setStatus(1);
+            } else info.get(i).setStatus(1);
         }
         return info;
     }

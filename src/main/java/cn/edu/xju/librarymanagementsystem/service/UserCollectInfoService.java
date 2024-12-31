@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserCollectInfoService {
     @Autowired
-    UserCollectInfoMapper userCollectInfoMapper;
+    private UserCollectInfoMapper userCollectInfoMapper;
     
     public List<BookInfo> selectCollectBookInfoByUserId(String userId) {
         return userCollectInfoMapper.getCollectBookInfoByUserId(userId);
