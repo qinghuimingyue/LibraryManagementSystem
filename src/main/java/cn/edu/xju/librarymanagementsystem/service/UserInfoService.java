@@ -1,6 +1,7 @@
 package cn.edu.xju.librarymanagementsystem.service;
 
 import cn.edu.xju.librarymanagementsystem.mapper.UserInfoMapper;
+import cn.edu.xju.librarymanagementsystem.pojo.UserInfo;
 import cn.edu.xju.librarymanagementsystem.pojo.UserInfoANDBorrowingInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,9 @@ public class UserInfoService {
         userInfoANDBorrowingInfo.setGender(userInfoMapper.getUserInfo(userId).getGender());
         userInfoANDBorrowingInfo.setUserId(userId);
         return userInfoANDBorrowingInfo;
+    }
+    
+    public boolean updateUserInfo(UserInfo userInfo) {
+        return userInfoMapper.updateUserInfo(userInfo) == 1;
     }
 }

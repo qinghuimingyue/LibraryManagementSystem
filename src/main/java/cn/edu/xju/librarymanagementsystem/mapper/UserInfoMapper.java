@@ -4,6 +4,7 @@ import cn.edu.xju.librarymanagementsystem.pojo.BorrowingInfo;
 import cn.edu.xju.librarymanagementsystem.pojo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -26,4 +27,7 @@ public interface UserInfoMapper {
                 b.user_id = #{userId}
               AND b.status = 1;""")
     public List<BorrowingInfo> getUserInfoList(String userId);
+    
+    @Update("update user_information set user_name=#{userName},gender=#{gender},birthday=#{birthday} where user_id=#{userId} and type='普通用户'")
+    public int updateUserInfo(UserInfo userInfo);
 }
